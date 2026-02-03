@@ -50,3 +50,12 @@ augmentations = augmentor.augment(
 
 for text in augmentations:
     print(text)
+
+---
+
+## Known Limitations
+
+- **WordNet synonyms:** May produce archaic/unnatural words
+- **Best for:** Classification, sentiment analysis, low-data NLP
+- **Not for:** Creative writing, grammar-perfect generation
+- **Random Swap**
