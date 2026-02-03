@@ -8,7 +8,7 @@ implemented from scratch using linguistic and rule-based approaches.
 
 ---
 
-## 🚀 Project Overview
+## Project Overview
 
 Text augmentation is commonly used to increase dataset diversity and
 improve model robustness when training NLP models.
@@ -20,7 +20,7 @@ This project focuses on:
 
 ---
 
-## 🧠 Implemented Augmentation Techniques
+## Implemented Augmentation Techniques
 
 - **Synonym Replacement** (WordNet-based)
 - **Random Deletion** (noise simulation)
@@ -50,12 +50,60 @@ augmentations = augmentor.augment(
 
 for text in augmentations:
     print(text)
+```
 
 ---
 
-## Known Limitations
+## **Known Limitations & Design Decisions**
 
-- **WordNet synonyms:** May produce archaic/unnatural words
-- **Best for:** Classification, sentiment analysis, low-data NLP
-- **Not for:** Creative writing, grammar-perfect generation
-- **Random Swap**
+### **Synonym Quality**
+Synonym replacement relies on **NLTK's WordNet**, a dictionary-based lexical database.
+
+**May produce**:
+- **Archaic/uncommon synonyms**
+- **Technically correct but unnatural** replacements (e.g., "full" → "good")
+
+> **Note**: Inherent to all rule-based WordNet augmentation libraries
+
+### **Augmentation Philosophy**
+**Goal**: **Data diversity > perfect fluency**
+
+**Benefits of "slightly unnatural" text**:
+- **Improves model robustness**
+- **Reduces overfitting** 
+- **Simulates noisy real-world text**
+
+### **Applicability**
+
+**Best for**:
+- **Text classification**
+- **Sentiment analysis**
+- **Topic modeling**
+- **Low-resource NLP datasets**
+
+**Less suitable**:
+- **High-quality text generation**
+- **Grammar-sensitive applications**
+- **Creative/literary rewriting**
+
+**Production fluency**: Use **BERT/T5/GPT** models
+
+---
+
+## **What I Learned**
+
+- **NLP preprocessing**: Tokenization + POS tagging
+- **WordNet-based** lexical augmentation
+- **Quality vs diversity** trade-offs
+- **Configurable/reproducible** ML utilities
+- **Real-world text** edge cases
+
+---
+
+## **Future Improvements**
+
+- **Context-aware** augmentation (transformers)
+- **Domain-specific** synonym filtering
+- **Hugging Face** pipeline integration
+- **Web/GUI** interface (Streamlit/Gradio)
+
